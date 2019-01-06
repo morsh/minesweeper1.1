@@ -7,7 +7,7 @@ import NavLink from './components/NavLink';
 import './App.css';
 
 import Home from './pages/Home';
-import Page1 from './pages/Page1';
+import Minesweeper from './pages/Minesweeper';
 import Page2 from './pages/Page2';
 import Page3 from './pages/Page3';
 
@@ -29,10 +29,10 @@ const navItems: INavSettings[] = [
     component: Home
   },
   {
-    label: 'Page 1',
-    to: '/page-1',
+    label: 'Minesweeper',
+    to: '/minesweeper',
     icon: 'bookmark',
-    component: Page1
+    component: Minesweeper
   },
   {
     label: 'Page 2',
