@@ -1,31 +1,35 @@
-import { IGameState, IGameAction, GameStatus, GameLevel } from './types';
+import {
+  IGameState,
+  IGameAction,
+  GameStatus,
+  GameLevel,
+  GameActionType
+} from './types';
 
 const initialState = {
-  level: GameLevel.Beginner,
+  level: GameLevel.Easy,
   startTime: new Date(),
-  status: GameStatus.Running
+  status: GameStatus.NotStarted
 };
 
-const game = (state: IGameState = initialState, action: IGameAction): IGameState => {
-  
+const game = (
+  state: IGameState = initialState,
+  action: IGameAction
+): IGameState => {
   switch (action.type) {
-    case 'START':
+    case GameActionType.START:
       return {
         level: action.level,
         startTime: new Date(),
         status: GameStatus.Running
       };
-    case 'STOP':
+    case GameActionType.STOP:
       return {
         level: state.level,
         startTime: state.startTime,
         endTime: new Date(),
-        status: GameStatus.Fail
+        status: action.status
       };
-    case 'START_TIMER':
-    case 'RESET_TIMER':
-    case 'STOP_TIMER':
-    case 'REVEAL':
     default:
       return state;
   }

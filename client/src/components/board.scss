@@ -1,0 +1,34 @@
+ul.board {
+
+  margin: 20px 0;
+  padding: 0;
+  list-style-type: none;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    clear: both;
+  }
+
+  > li li {
+    width: 24px;
+    height: 24px;
+    border: 1px solid gray;
+    float: left;
+    text-align: center;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+  }
+
+  .revealed {
+    background-color: aqua;
+  }
+
+  .flagged {
+    background-color: yellow;
+  }
+}
