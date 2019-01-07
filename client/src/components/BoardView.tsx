@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { IBoardState, IField, GameLevel } from 'src/reducers/minesweeper/types';
+import { IBoardState, IField, GameLevel, IDispatchState, IGameState, GameStatus } from 'src/reducers/minesweeper/types';
 import { FontIcon } from 'react-md';
 
 import './board.css';
@@ -8,6 +8,7 @@ import { startGame, clickBoardCell, rightClickBoardCell } from 'src/actions';
 
 interface IProps {
   board?: IBoardState;
+  game?: IGameState;
   level?: GameLevel;
   initializeBoard?: any;
   clickBoardCell?: any;
@@ -31,6 +32,11 @@ class BoardView extends React.Component<IProps> {
   }
 
   getFieldContent(field: IField): JSX.Element {
+
+    if (!field.revealed) {
+      return <span>&nbsp;</span>;
+    }
+
     return field.mine ? (
       <FontIcon>bug_report</FontIcon>
     ) : field.mineCount > 0 ? (
@@ -52,6 +58,7 @@ class BoardView extends React.Component<IProps> {
 
   render() {
     const board = this.props.board;
+    const game = this.props.game;
 
     if (!board) {
       return null;
@@ -76,12 +83,17 @@ class BoardView extends React.Component<IProps> {
       </li>
     ));
 
-    return <ul className="board">{cells}</ul>;
+    const boardClass = 'board ' + (game && (
+      game.status === GameStatus.Fail ? 'board-fail' :
+      game.status === GameStatus.Success ? 'board-success' : ''));
+
+    return <ul className={boardClass}>{cells}</ul>;
   }
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: IDispatchState) => ({
   board: state.board,
+  game: state.game,
   level: (state.game && state.game.level) || null
 });
 
