@@ -11,6 +11,10 @@ import { Field } from 'src/reducers/minesweeper/field';
 import { stopGame } from './game';
 import { Dispatch } from 'redux';
 
+// =================================
+// Dispach Methods
+// =================================
+
 export const initializeBoard = (level: GameLevel) => (
   dispatch: Dispatch,
   getState: () => IDispatchState
@@ -60,6 +64,10 @@ export const rightClickBoardCell = (x: number, y: number) => (
     state
   });
 };
+
+// =================================
+// Calculation Methods
+// =================================
 
 function getDimensionsFromGameLevel(level: GameLevel): number {
   switch (level) {
