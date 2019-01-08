@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { IBoardState, IField, GameLevel, IDispatchState, IGameState, GameStatus } from 'src/reducers/minesweeper/types';
 import { FontIcon } from 'react-md';
 
-import './board.css';
 import { startGame, clickBoardCell, rightClickBoardCell } from 'src/actions';
 
 interface IProps {
@@ -34,7 +33,10 @@ class BoardView extends React.Component<IProps> {
   getFieldContent(field: IField): JSX.Element {
 
     if (!field.revealed) {
-      return <span>&nbsp;</span>;
+      if (!field.flagged) {
+        return <span>&nbsp;</span>;
+      }
+      return <FontIcon>flag</FontIcon>;
     }
 
     return field.mine ? (

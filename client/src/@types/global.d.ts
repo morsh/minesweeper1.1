@@ -3,12 +3,10 @@ declare module "xhr-request" {
   export = request;
 }
 
-declare module "react-calendar-timeline/lib" {
-  let lib: any;
-  export default lib;
-}
-
-declare module "react-calendar-timeline/lib/resize-detector/container" {
-  let lib: any;
-  export default lib;
+interface INavSettings {
+  exact?: boolean;
+  label: string;
+  to: string;
+  icon: string;
+  component: React.ComponentClass;
 }

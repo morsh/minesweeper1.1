@@ -9,12 +9,12 @@ import {
 } from 'src/reducers/minesweeper/types';
 import { Field } from 'src/reducers/minesweeper/field';
 import { stopGame } from './game';
+import { Dispatch } from 'redux';
 
 export const initializeBoard = (level: GameLevel) => (
-  dispatch: any,
+  dispatch: Dispatch,
   getState: () => IDispatchState
 ) => {
-
   const state = getState().board;
   state.dimension = getDimensionsFromGameLevel(level);
   dispatch({
@@ -26,7 +26,7 @@ export const initializeBoard = (level: GameLevel) => (
 };
 
 export const clickBoardCell = (x: number, y: number) => (
-  dispatch: any,
+  dispatch: Dispatch,
   getState: () => IDispatchState
 ) => {
   const state = clickCell(getState().board, x, y);
@@ -47,7 +47,7 @@ export const clickBoardCell = (x: number, y: number) => (
 };
 
 export const rightClickBoardCell = (x: number, y: number) => (
-  dispatch: any,
+  dispatch: Dispatch,
   getState: () => IDispatchState
 ) => {
   const state = getState().board;

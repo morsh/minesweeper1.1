@@ -5,15 +5,17 @@ import ResetGame from './ResetGame';
 
 const GameControl = ({ dispatch }: any) => {
   return (
-    <div className="md-grid">
-      <div className="md-cell md-cell--4">
-        <LevelPicker />
-      </div>
-      <div className="md-cell md-cell--4">
-        <ResetGame />
-      </div>
-      <div className="md-cell md-cell--4">
-        <GameState />
+    <div>
+      <div className="md-grid">
+        <div className="md-cell md-cell--2">
+          <LevelPicker />
+        </div>
+        <div className="md-cell md-cell--2 ms-add-top-padding ms-game-state">
+          <GameState />
+        </div>
+        <div className="md-cell md-cell--2 ms-add-top-padding ms-reset-game">
+          <ResetGame />
+        </div>
       </div>
     </div>
   );

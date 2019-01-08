@@ -46,9 +46,25 @@ ul.board {
 }
 
 .success {
-  background-color: $md-green-200;
+  .md-chip {
+    background-color: $md-green-200;
+  }
 }
 
 .fail {
-  background-color: $md-red-200;
+  .md-chip {
+    background-color: $md-red-200;
+  }
+}
+
+.ms-add-top-padding {
+  padding-top: 29px;
+}
+
+.ms-game-state {
+  
+  span {
+    margin-top: 3px;
+    display: inline-block;
+  }
 }

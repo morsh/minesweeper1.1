@@ -1,12 +1,10 @@
-import {
-  GameActionType,
-  GameLevel
-} from 'src/reducers/minesweeper/types';
+import { GameActionType, GameLevel, IDispatchState } from 'src/reducers/minesweeper/types';
 import { initializeBoard } from './board';
+import { Dispatch } from 'redux';
 
 export const startGame = (level: GameLevel) => (
-  dispatch: any,
-  getState: () => any
+  dispatch: Dispatch<any>,
+  getState: () => IDispatchState
 ) => {
   dispatch({ type: GameActionType.START, level });
   dispatch(initializeBoard(level));

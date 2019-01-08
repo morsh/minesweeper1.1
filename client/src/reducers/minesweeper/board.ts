@@ -11,10 +11,7 @@ const initialState: IBoardState = {
   boardData: []
 };
 
-const board = (
-  state: IBoardState = initialState,
-  action: IBoardAction
-): IBoardState => {
+const board = (state: IBoardState = initialState, action: IBoardAction): IBoardState => {
   switch (action.type) {
     case BoardActionType.INITALIZE:
       return {

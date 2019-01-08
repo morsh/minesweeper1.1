@@ -8,16 +8,6 @@ import './App.css';
 
 import Home from './pages/Home';
 import Minesweeper from './pages/Minesweeper';
-import Page2 from './pages/Page2';
-import Page3 from './pages/Page3';
-
-interface INavSettings {
-  exact?: boolean;
-  label: string;
-  to: string;
-  icon: string;
-  component: React.ComponentClass;
-}
 
 const DEFAULT_TITLE = 'Welcome';
 const navItems: INavSettings[] = [
@@ -31,20 +21,8 @@ const navItems: INavSettings[] = [
   {
     label: 'Minesweeper',
     to: '/minesweeper',
-    icon: 'bookmark',
+    icon: 'flag',
     component: Minesweeper
-  },
-  {
-    label: 'Page 2',
-    to: '/page-2',
-    icon: 'donut_large',
-    component: Page2
-  },
-  {
-    label: 'Page 3',
-    to: '/page-3',
-    icon: 'flight_land',
-    component: Page3
   }
 ];
 

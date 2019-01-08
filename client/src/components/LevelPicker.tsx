@@ -4,7 +4,7 @@ import { startGame } from '../actions';
 import { GameLevel } from 'src/reducers/minesweeper/types';
 import { SelectField } from 'react-md';
 
-const LevelPicker = ({ dispatch }: any) => {
+const LevelPicker = ({ game, dispatch }: any) => {
   const onLevelChange = (value: string) => {
     dispatch(startGame(value as GameLevel));
   };
@@ -15,10 +15,16 @@ const LevelPicker = ({ dispatch }: any) => {
       label="Game Level"
       placeholder="Placeholder"
       className="md-cell"
+      style={{ width: '100%' }}
+      value={game.level}
       menuItems={Object.keys(GameLevel)}
       onChange={onLevelChange}
     />
   );
 };
 
-export default connect()(LevelPicker);
+const mapStateToProps = (state: any) => ({
+  game: state.game
+});
+
+export default connect(mapStateToProps)(LevelPicker);

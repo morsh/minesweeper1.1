@@ -12,10 +12,7 @@ const initialState = {
   status: GameStatus.NotStarted
 };
 
-const game = (
-  state: IGameState = initialState,
-  action: IGameAction
-): IGameState => {
+const game = (state: IGameState = initialState, action: IGameAction): IGameState => {
   switch (action.type) {
     case GameActionType.START:
       return {
