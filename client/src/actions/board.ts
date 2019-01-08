@@ -96,7 +96,7 @@ function plantMines(state: IBoardState): BoardData {
   let x: number;
   let y: number;
 
-  const mines = Math.round(state.dimension % 10);
+  const mines = Math.round(state.dimension / 5) * 10;
 
   const getRandomNumber = (max: number) =>
     Math.floor(Math.random() * 1000 + 1) % max;
