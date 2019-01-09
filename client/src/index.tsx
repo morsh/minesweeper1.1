@@ -9,8 +9,6 @@ import App from './App';
 import './index.css';
 import * as WebFontLoader from 'webfontloader';
 
-import { BrowserRouter as Router } from 'react-router-dom';
-
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 WebFontLoader.load({
@@ -21,9 +19,7 @@ WebFontLoader.load({
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
+    <App />
   </Provider>,
   document.getElementById('root') as HTMLElement
 );

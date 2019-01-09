@@ -78,7 +78,7 @@ function getDimensionsFromGameLevel(level: GameLevel): number {
     case GameLevel.Intermediate:
       return 25;
     case GameLevel.Advanced:
-      return 36;
+      return 300;
     default:
       return 0;
   }
@@ -213,7 +213,7 @@ function reveal(state: IBoardState, field: IField, auto: boolean): IBoardState {
     revealBoard(state);
     state.isGameFinished = true;
     state.mineRevealed = true;
-    // this.eventGameOver.trigger();
+
   } else if (field.revealed && !auto) {
     const flagged = traverseBoard(state, field, f => f.flagged);
 
@@ -222,6 +222,7 @@ function reveal(state: IBoardState, field: IField, auto: boolean): IBoardState {
         reveal(state, f, true)
       );
     }
+             
   } else {
     field.revealed = true;
     field.flagged = false;
