@@ -1,0 +1,70 @@
+@import 'react-md/src/scss/react-md';
+
+ul.board {
+
+  margin: 20px 0;
+  padding: 0;
+  list-style-type: none;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    clear: both;
+  }
+
+  > li:first-child li {
+    border-top: 1px solid gray;
+  }
+
+  > li li {
+    width: 24px;
+    height: 24px;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    float: left;
+    text-align: center;
+    background-color: white;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+
+    &:first-child {
+      border-left: 1px solid gray;      
+    }
+  }
+
+  .revealed {
+    background-color: $md-blue-200;
+  }
+
+  .flagged {
+    background-color: yellow;
+  }
+}
+
+.success {
+  .md-chip {
+    background-color: $md-green-200;
+  }
+}
+
+.fail {
+  .md-chip {
+    background-color: $md-red-200;
+  }
+}
+
+.ms-add-top-padding {
+  padding-top: 29px;
+}
+
+.ms-game-state {
+  
+  span {
+    margin-top: 3px;
+    display: inline-block;
+  }
+}
