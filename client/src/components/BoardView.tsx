@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { IBoardState, IField, GameLevel, IDispatchState, IGameState, GameStatus } from 'src/reducers/minesweeper/types';
 import { FontIcon } from 'react-md';
 
 import { startGame, clickBoardCell, rightClickBoardCell } from 'src/actions';
+import { GameStatus } from 'src/@types/enums';
 
 interface IProps {
   board?: IBoardState;
   game?: IGameState;
-  level?: GameLevel;
+  level?: IGameLevel;
   initializeBoard?: any;
   clickBoardCell?: any;
   rightClickBoardCell?: any;
@@ -100,7 +100,7 @@ const mapStateToProps = (state: IDispatchState) => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  initializeBoard: (level: GameLevel) => dispatch(startGame(level)),
+  initializeBoard: (level: IGameLevel) => dispatch(startGame(level)),
   clickBoardCell: (x: number, y: number) => dispatch(clickBoardCell(x, y)),
   rightClickBoardCell: (x: number, y: number) =>
     dispatch(rightClickBoardCell(x, y))

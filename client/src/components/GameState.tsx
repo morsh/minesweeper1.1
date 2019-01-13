@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { IGameState, GameStatus } from 'src/reducers/minesweeper/types';
 import { Chip } from 'react-md';
 import * as moment from 'moment';
+import { GameStatus } from 'src/@types/enums';
 
 interface IProps {
   game?: IGameState;

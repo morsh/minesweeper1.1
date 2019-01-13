@@ -1,10 +1,4 @@
-import {
-  IGameState,
-  IGameAction,
-  GameStatus,
-  GameLevel,
-  GameActionType
-} from './types';
+import { GameLevel, GameActionType, GameStatus } from 'src/@types/enums';
 
 const initialState = {
   level: GameLevel.Easy,
@@ -20,13 +14,17 @@ const game = (state: IGameState = initialState, action: IGameAction): IGameState
         startTime: new Date(),
         status: GameStatus.Running
       };
+
     case GameActionType.STOP:
       return {
-        level: state.level,
-        startTime: state.startTime,
+        ...state,
         endTime: new Date(),
         status: action.status
       };
+
+    case GameActionType.LOAD:
+      return action.game;
+
     default:
       return state;
   }

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { startGame } from '../actions';
-import { GameLevel, IDispatchState } from 'src/reducers/minesweeper/types';
 import { Button } from 'react-md';
 
 const ResetGame = ({ level, onStartGame }: any) => {
@@ -24,7 +23,7 @@ const mapStateToProps = (state: IDispatchState) => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  onStartGame: (level: GameLevel) => dispatch(startGame(level))
+  onStartGame: (level: IGameLevel) => dispatch(startGame(level))
 });
 
 export default connect(

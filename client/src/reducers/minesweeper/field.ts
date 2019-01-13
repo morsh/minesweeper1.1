@@ -1,41 +1,51 @@
-import { IField } from './types';
+export type IFieldContructorParams = Partial<IField> & {
+  x: number;
+  y: number;
+};
 
-export class Field implements IField {
-  x: number = -1;
-  y: number = -1;
-  flagged: boolean = false;
-  revealed: boolean = false;
-  
-  private _mine: boolean = false;
-  private _mineCount: number = 0;
-  private _empty: boolean = true;
+export default abstract class Field {
 
-  get mine(): boolean { return this._mine; }
-  get mineCount(): number { return this._mineCount; }
-  get empty(): boolean { return this._empty; }
-
-  constructor(x: number, y: number) {
-    this.x = x;
-    this.y = y;
-  }
-
-  setMine(mine: boolean) {
+  static setMine(field: IField, mine: boolean) {
     if (mine) {
-      this._mine = true;
-      this._empty = false;
-      this._mineCount = 0;
+      field.mine = true;
+      field.empty = false;
+      field.mineCount = 0;
     } else {
-      this._mine = false;
-      this._empty = true;
-      this._mineCount = 0;
+      field.mine = false;
+      field.empty = true;
+      field.mineCount = 0;
     }
   }
 
-  setEmpty(empty: boolean) {
-    this._empty = empty;
+  static setEmpty(field: IField, empty: boolean) {
+    field.empty = empty;
   }
 
-  setMineCount(mineCount: number) {
-    this._mineCount = mineCount;
+  static setMineCount(field: IField, mineCount: number) {
+    field.mineCount = mineCount;
+  }
+
+  static fromCoordinates(x: number, y: number) {
+    return Field.fromObject({ x, y });
+  }
+
+  static fromObject(obj: IFieldContructorParams): IField {
+
+    const field: IField = Object.assign(
+      { 
+        x: -1, 
+        y: -1,
+        flagged: false,
+        revealed: false,
+        
+        mine: false,
+        mineCount: 0,
+        empty: true
+      },
+      obj
+    );
+
+    return field;
+
   }
 }

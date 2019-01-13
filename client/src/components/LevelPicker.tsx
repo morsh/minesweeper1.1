@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { startGame } from '../actions';
-import { GameLevel } from 'src/reducers/minesweeper/types';
 import { SelectField } from 'react-md';
+import { GameLevel } from 'src/@types/enums';
 
 const LevelPicker = ({ game, dispatch }: any) => {
   const onLevelChange = (value: string) => {
-    dispatch(startGame(value as GameLevel));
+    dispatch(startGame(value as IGameLevel));
   };
 
   return (

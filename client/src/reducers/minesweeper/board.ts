@@ -1,8 +1,4 @@
-import {
-  IBoardState,
-  IBoardAction,
-  BoardActionType,
-} from './types';
+import { BoardActionType, GameActionType } from 'src/@types/enums';
 
 const initialState: IBoardState = {
   mineRevealed: false,
@@ -28,6 +24,9 @@ const board = (state: IBoardState = initialState, action: IBoardAction): IBoardS
         boardData: action.state.boardData
       };
 
+    case GameActionType.LOAD:
+      return action.board;
+      
     default:
       return state;
   }

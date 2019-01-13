@@ -10,6 +10,7 @@ import './App.css';
 
 import Home from './pages/Home';
 import Minesweeper from './pages/Minesweeper';
+import Toasts from './components/Toasts';
 
 const DEFAULT_TITLE = 'Welcome';
 const navItems: INavSettings[] = [
@@ -60,6 +61,7 @@ class App extends React.Component {
             </NavigationDrawer>
           )}
         />
+        <Toasts />
       </Router>
     );
   }

@@ -23,3 +23,4 @@ export const VisibilityFilters = {
 
 export { initializeBoard, clickBoardCell, rightClickBoardCell } from './board';
 export { startGame, stopGame } from './game';
+export { saveGame, loadGame } from './game-loader';

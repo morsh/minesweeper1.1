@@ -1,21 +1,13 @@
-import {
-  BoardActionType,
-  GameLevel,
-  IBoardState,
-  BoardData,
-  IField,
-  GameStatus,
-  IDispatchState
-} from 'src/reducers/minesweeper/types';
-import { Field } from 'src/reducers/minesweeper/field';
+import Field from 'src/reducers/minesweeper/field';
 import { stopGame } from './game';
 import { Dispatch } from 'redux';
+import { BoardActionType, GameStatus, GameLevel } from 'src/@types/enums';
 
 // =================================
 // Dispach Methods
 // =================================
 
-export const initializeBoard = (level: GameLevel) => (
+export const initializeBoard = (level: IGameLevel) => (
   dispatch: Dispatch,
   getState: () => IDispatchState
 ) => {
@@ -69,7 +61,7 @@ export const rightClickBoardCell = (x: number, y: number) => (
 // Calculation Methods
 // =================================
 
-function getDimensionsFromGameLevel(level: GameLevel): number {
+function getDimensionsFromGameLevel(level: IGameLevel): number {
   switch (level) {
     case GameLevel.Easy:
       return 9;
@@ -91,7 +83,7 @@ function initializeBoardData(state: IBoardState): BoardData {
     boardData[i] = [];
 
     for (let j = 0; j < state.dimension; j++) {
-      boardData[i][j] = new Field(i, j);
+      boardData[i][j] = Field.fromCoordinates(i, j);
     }
   }
 
@@ -104,7 +96,7 @@ function plantMines(state: IBoardState): BoardData {
   let x: number;
   let y: number;
 
-  const mines = Math.round(state.dimension / 5) * 10;
+  const mines = Math.round(Math.sqrt(state.dimension)) * 2;
 
   const getRandomNumber = (max: number) =>
     Math.floor(Math.random() * 1000 + 1) % max;
@@ -114,7 +106,7 @@ function plantMines(state: IBoardState): BoardData {
     y = getRandomNumber(state.dimension);
 
     if (!state.boardData[x][y].mine) {
-      state.boardData[x][y].setMine(true);
+      Field.setMine(state.boardData[x][y], true);
       minesPlanted++;
     }
   }
@@ -131,9 +123,9 @@ function calculateDistance(state: IBoardState): BoardData {
         const mines = traverseBoard(state, field, (f: IField) => !!f.mine);
 
         if (mines.length > 0) {
-          field.setMineCount(mines.length);
+          Field.setMineCount(field, mines.length);
         } else {
-          field.setEmpty(true);
+          Field.setEmpty(field, true);
         }
       }
     }
